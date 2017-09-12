@@ -6,22 +6,6 @@ metadata:
 apiVersion: "v1"
 kind: "PersistentVolume"
 metadata:
-  name: mysql-disk
-spec:
-  capacity:
-    storage: "200Gi"
-  accessModes:
-    - "ReadWriteOnce"
-  gcePersistentDisk:
-    fsType: "ext4"
-    pdName: "mysql-disk"
-  claimRef:
-    name: mysql-disk
-    namespace: sock-shop
----
-apiVersion: "v1"
-kind: "PersistentVolume"
-metadata:
   name: mongo-orders
 spec:
   capacity:
@@ -66,18 +50,6 @@ spec:
   claimRef:
     name: mongo-users
     namespace: sock-shop
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: mysql-disk
-  namespace: sock-shop
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 200Gi
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
